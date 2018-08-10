@@ -1,4 +1,4 @@
-const core = require('griboyedov');
+const core = require('gls-core-service');
 const BasicService = core.service.Basic;
 
 class Sender extends BasicService {
