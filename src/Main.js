@@ -2,15 +2,16 @@ const core = require('gls-core-service');
 const logger = core.Logger;
 const stats = core.Stats.client;
 const BasicService = core.service.Basic;
+const MongoDB = core.service.MongoDB;
 const env = require('./Env');
+const Router = require('./service/Router');
 
 class Main extends BasicService {
     constructor() {
         super();
 
-        // TODO -
         this.printEnvBasedConfig(env);
-        this.addNested();
+        this.addNested(new MongoDB(), new Router());
         this.stopOnExit();
     }
 

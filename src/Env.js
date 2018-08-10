@@ -2,5 +2,5 @@
 const env = process.env;
 
 module.exports = {
-    // TODO -
+    GLS_MAIL_API_KEY: env.GLS_MAIL_API_KEY,
 };

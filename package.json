@@ -16,6 +16,7 @@
     "author": "golos.io",
     "license": "GPL-3.0",
     "dependencies": {
+        "@sendgrid/mail": "^6.3.1",
         "gls-core-service": "git+https://github.com/GolosChain/core-service.git"
     }
 }
