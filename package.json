@@ -1,6 +1,6 @@
 {
-    "name": "email",
-    "version": "0.0.1",
+    "name": "mail-service",
+    "version": "0.1.0",
     "description": "",
     "main": "./src/Main.js",
     "scripts": {
