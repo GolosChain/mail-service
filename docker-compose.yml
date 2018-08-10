@@ -5,9 +5,9 @@ services:
     image: mongo
     restart: always
     volumes:
-      - ./db:/data/db
+      - mongodb_vol:/data/db
     ports:
-      - 27017:27017
+      - 127.0.0.1:27021:27017
     networks:
       - services-tier
   node:
@@ -18,8 +18,21 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - $GLS_GATE_HOST:$GLS_GATE_PORT:$GLS_GATE_PORT
     networks:
       - services-tier
+    environment:
+      - GLS_MAIL_API_KEY
+      - GLS_DAY_START
+      - GLS_MONGO_CONNECT
+      - GLS_METRICS_HOST
+      - GLS_METRICS_PORT
+      - GLS_GATE_HOST
+      - GLS_GATE_PORT
+
+volumes:
+  mongodb_vol:
 
 networks:
   services-tier:
