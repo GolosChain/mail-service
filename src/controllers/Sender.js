@@ -1,5 +1,5 @@
 const sendGrid = require('@sendgrid/mail');
-const env = require('../../Env');
+const env = require('../env');
 
 class Sender {
     constructor() {
@@ -7,17 +7,13 @@ class Sender {
         sendGrid.setSubstitutionWrappers('{{', '}}');
     }
 
-    async broadcast(data) {
-        if (!Array.isArray(data)) {
-            data = [data];
-        }
-
-        for (let message of data) {
-            await this._send(message);
+    async sendMany({ messages }) {
+        for (let message of messages) {
+            await this.sendOne(message);
         }
     }
 
-    async _send({ from, to, subject, templateId, data }) {
+    async sendOne({ from, to, subject, templateId, data }) {
         await sendGrid.send({
             from,
             to,

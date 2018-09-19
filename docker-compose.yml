@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - $GLS_GATE_HOST:$GLS_GATE_PORT:$GLS_GATE_PORT
+      - $GLS_CONNECTOR_HOST:$GLS_CONNECTOR_PORT:$GLS_GATE_PORT
     networks:
       - services-tier
     environment:
@@ -28,8 +28,8 @@ services:
       - GLS_MONGO_CONNECT
       - GLS_METRICS_HOST
       - GLS_METRICS_PORT
-      - GLS_GATE_HOST
-      - GLS_GATE_PORT
+      - GLS_CONNECTOR_HOST
+      - GLS_CONNECTOR_PORT
 
 volumes:
   mongodb_vol:
