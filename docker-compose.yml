@@ -7,7 +7,7 @@ services:
     volumes:
       - mongodb_vol:/data/db
     ports:
-      - 127.0.0.1:27021:27017
+      - 127.0.0.1:27017:27017
     networks:
       - services-tier
   node:

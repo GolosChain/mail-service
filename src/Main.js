@@ -7,9 +7,7 @@ const Connector = require('./services/Connector');
 
 class Main extends BasicMain {
     constructor() {
-        super(stats);
-
-        this.printEnvBasedConfig(env);
+        super(stats, env);
         this.addNested(new MongoDB(), new Connector());
     }
 }

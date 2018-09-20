@@ -12,8 +12,8 @@ class Connector extends BasicConnector {
     async start() {
         await super.start({
             serverRoutes: {
-                sendOne: this._sender.sendOne.bind(this._sender),
-                sendMany: this._sender.sendMany.bind(this._sender),
+                send: this._sender.send.bind(this._sender),
+                sendBulk: this._sender.sendBulk.bind(this._sender),
             },
         });
     }

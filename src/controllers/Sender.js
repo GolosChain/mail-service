@@ -7,13 +7,7 @@ class Sender {
         sendGrid.setSubstitutionWrappers('{{', '}}');
     }
 
-    async sendMany({ messages }) {
-        for (let message of messages) {
-            await this.sendOne(message);
-        }
-    }
-
-    async sendOne({ from, to, subject, templateId, data }) {
+    async send({ from, to, subject, templateId, data }) {
         await sendGrid.send({
             from,
             to,
@@ -21,6 +15,12 @@ class Sender {
             templateId,
             dynamicTemplateData: data,
         });
+    }
+
+    async sendBulk({ messages }) {
+        for (let message of messages) {
+            await this.send(message);
+        }
     }
 }
 
