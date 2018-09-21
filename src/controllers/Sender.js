@@ -18,7 +18,7 @@ class Sender {
             });
         } catch (error) {
             if (error.response) {
-                throw { code: 1001, message: 'Bad Sendgrid request' };
+                throw { code: 1001, message: 'Invalid SendGrid request' };
             } else {
                 throw error;
             }
