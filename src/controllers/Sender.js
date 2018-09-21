@@ -8,13 +8,21 @@ class Sender {
     }
 
     async send({ from, to, subject, templateId, data }) {
-        await sendGrid.send({
-            from,
-            to,
-            subject,
-            templateId,
-            dynamicTemplateData: data,
-        });
+        try {
+            await sendGrid.send({
+                from,
+                to,
+                subject,
+                templateId,
+                dynamicTemplateData: data,
+            });
+        } catch (error) {
+            if (error.response) {
+                throw { code: 1001, message: 'Bad Sendgrid request' };
+            } else {
+                throw error;
+            }
+        }
     }
 
     async sendBulk({ messages }) {
